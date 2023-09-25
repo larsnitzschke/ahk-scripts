@@ -5,7 +5,7 @@ SetWorkingDir %A_ScriptDir%
 ;<<<<<<<<<<<<<<<||||||Setup||||||>>>>>>>>>>>>>>>;
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;
 #SingleInstance force
-Menu, Tray, Icon, C:\Users\Lars\Documents\ahk-scripts\Icons\firefoxAHK_16.png
+Menu, Tray, Icon, D:\ahk-scripts\Icons\firefoxAHK_16.png
 OnMessage(0xF000, "TURN_OFF")
 OnMessage(0xF001, "RELOAD")
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;

@@ -5,7 +5,7 @@ SetWorkingDir %A_ScriptDir%
 ;<<<<<<<<<<<<<<<||||||Setup||||||>>>>>>>>>>>>>>>;
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;
 #SingleInstance force
-Menu, Tray, Icon, C:\Users\Lars\Documents\ahk-scripts\Icons\ScriptStarterAHK_16.png
+Menu, Tray, Icon, D:\ahk-scripts\Icons\ScriptStarterAHK_16.png
 SetTimer, spotify, 500
 ;SetTimer, firefox, 500 ;FirefoxScript won't start, if this line is a comment
 Run AutoHotkey macros.ahk

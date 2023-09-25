@@ -5,48 +5,69 @@ SetWorkingDir %A_ScriptDir%
 ;<<<<<<<<<<<<<<<||||||Setup||||||>>>>>>>>>>>>>>>;
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;
 #SingleInstance force
-Menu, Tray, Icon, C:\Users\Lars\Documents\ahk-scripts\Icons\spotifyAHK_16.png
+Menu, Tray, Icon, D:\ahk-scripts\Icons\spotifyAHK_16.png
 OnMessage(0xF000, "TURN_OFF")
 OnMessage(0xF001, "RELOAD")
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;
 ;<<<<<<<<<<<<<<<|||||Macros||||||>>>>>>>>>>>>>>>;
 ;<<<<<<<<<<<<<<<|||||||||||||||||>>>>>>>>>>>>>>>;
-#IfWinActive, ahk_exe spotify.exe
-NumpadDot::
+~F24::
+FileRead, key, D:\ahk-scripts\luaMacros2AHKBridge\keypressed.txt
+tippy(You have pressed %key%) ;<--- this function will just launch a quick tooltip that shows you what key you pressed. OPTIONAL.
+
+if (key = "delete"){
 	if (WinActive("ahk_exe spotify.exe")){
         BlockInput, On
         Click, right
 	    Sleep 50
 	    Send {Up}
-		Sleep 10
+		Sleep 50
 		Send {Up}
-		Sleep 10
+		Sleep 50
 		Send {Up}
-		Sleep 10
+		Sleep 50
 		Send {Enter}
 		Sleep 10
         BlockInput, Off
     }
-return
-Numpad1::
+}
+else if (key = "num1"){
 	AddToPlaylist(1,-1) ;MusikiHasi
-return
-Numpad2:
+}
+else if (key = "num2"){
 	AddToPlaylist(2,2) ;Electronic Reloaded
-return
-Numpad3::
+}
+else if (key = "num3"){
 	AddToPlaylist(2,3) ;Electronic Holding
-return
-Numpad4::
+}
+else if (key = "num4"){
 	AddToPlaylist(3,-1) ;Warteschlange
-return
-Numpad5::
+}
+else if (key = "num5"){
 	AddToPlaylist(4,-1) ;Background
-return
-Numpad6::
+}
+else if (key = "num6"){
 	AddToPlaylist(5,-1) ;Epic Music
-return
-#IfWinActive
+}
+else if (key = "num7"){
+	AddToPlaylist(2,4) ;Electronic Relived
+}
+else if (key = "num8"){
+	AddToPlaylist(2,5) ;Electronic Reflected
+}
+else if (key = "num9"){
+	AddToPlaylist(2,6) ;Electronic Regarded
+}
+else if (key = "insert"){
+	Send {Media_Prev}
+}
+else if (key = "end"){
+	Send {Media_Play_Pause}
+}
+else if (key = "pagedown"){
+	Send {Media_Next}
+}
+
 AddToPlaylist(numPlaylist, numSubPlaylist){
 /*
 	@param numPlaylist : The number of the playlist or folder (see below)
@@ -92,17 +113,17 @@ AddToPlaylist(numPlaylist, numSubPlaylist){
 	WinGetPos, X, Y, Breite, Hoehe, A
 	;Clicking on the current song
 	if (X>=0 && Y>=0 && Breite<=1920 && Hoehe<=1040) {
-		variableX := Hoehe - 100
-		Click, right, 100, %variableX%
-	}
-	else if (X==-9 && Y==-9 && Breite==1938 && Hoehe==1048) {
-		;Vollbildmodus
-		variableX := Hoehe - 100
+		variableX := Hoehe - 68
 		Click, right, 120, %variableX%
+	}
+	else if (X==-9 && Y==-9 && Breite==3458 && Hoehe==1408) {
+		;Vollbildmodus
+		variableY := Hoehe - 78
+		Click, right, 128, %variableY%
 	}
 	Sleep 35
 
-	Send {Up 2}{Right}
+	Send {Down}{Right}
 	Sleep 20
 	i:=-1 ;-1 because of search bar
 	while (i < numPlaylist){
@@ -120,8 +141,9 @@ AddToPlaylist(numPlaylist, numSubPlaylist){
 		Sleep 35
 	}
 	Send {Enter}
-	;Sleep 100
-	;Send {Enter}
+	; Skip Pop-up if song is already in the playlist
+	Sleep 400
+	Send {Esc}
 
 	Sleep 30
 	;Moving the mouse back to where it was
