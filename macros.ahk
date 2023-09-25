@@ -19,6 +19,7 @@ OnMessage(0xF001, "RELOAD")
 #IfWinActive ;ANY Application
 
 global UnicodeVar = 0x1F600 ; Var for printing Emojis with F11
+
 F4:: ; Reloading this script
 	Tippy("Reloading macros.ahk")
 	Sleep 500
@@ -32,6 +33,42 @@ Return
 !D::
 	Send \diamond+{space}
 Return
+
+;F10::
+;	Send {F2}
+;	Send {End}
+;	Send {Left}
+;	Send {Left}
+;	Send {Left}
+;	Send {Left}
+;	Send {Del}
+;	Send _
+;	Send {Enter}
+;Return
+
+;F10::
+;	Loop 2000 {
+;		Click, 1050, 700
+;		Click, 1150, 700
+;		Click, 1250, 700
+;		Sleep 100
+;		Click, 1700, 1120
+;		Sleep 300
+;		Click, 2050, 700
+;		Click, 2050, 700
+;		Click, 2050, 700
+;		Sleep 100
+;		Click, 1700, 1120,
+;		Sleep 200
+;	}
+;Return
+
+;F11::Pause
+
+;F3::
+;	;checkmark
+;	Send {U+2713}
+;Return
 
 ~F24:: ; F24 key, virtually pressed by LuaMacros. The actual key pressed is saved in keypressed.txt
 FileRead, key, D:\AHK\luaMacros2AHKBridge\keypressed.txt
