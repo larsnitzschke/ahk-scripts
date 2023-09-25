@@ -20,11 +20,9 @@ if (key = "delete"){
         BlockInput, On
         Click, right
 	    Sleep 50
-	    Send {Up}
+	    Send {Down}
 		Sleep 50
-		Send {Up}
-		Sleep 50
-		Send {Up}
+		Send {Down}
 		Sleep 50
 		Send {Enter}
 		Sleep 10
